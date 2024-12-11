@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MainApp());
+class UnsplashApp extends StatefulWidget {
+  const UnsplashApp({super.key});
+
+  @override
+  State<UnsplashApp> createState() => _UnsplashAppState();
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class _UnsplashAppState extends State<UnsplashApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
