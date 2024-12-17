@@ -28,7 +28,7 @@ statusMessage: ${response.statusMessage}
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
+  void onError(DioError err, ErrorInterceptorHandler handler) {
     logError('''
 Error
 message: ${err.message}

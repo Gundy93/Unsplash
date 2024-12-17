@@ -22,7 +22,7 @@ class HttpStatusInterceptor extends Interceptor {
     required ResponseInterceptorHandler handler,
   }) {
     handler.reject(
-      DioException(
+      DioError(
         requestOptions: response.requestOptions,
         response: response,
         error: 'Status code: ${response.statusCode}',

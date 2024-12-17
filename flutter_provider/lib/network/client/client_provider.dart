@@ -1,5 +1,5 @@
 import 'package:flutter_provider/app/app_configs.dart';
-import 'package:flutter_provider/network/network_client.dart';
+import 'package:flutter_provider/network/client/network_client.dart';
 
 class ClientProvider {
   static ClientProvider? _instance;

@@ -12,8 +12,8 @@ class NetworkClient {
   Dio _generateDio() {
     final baseOptions = BaseOptions(
       baseUrl: _apiBaseUrl,
-      sendTimeout: const Duration(seconds: 30),
-      receiveTimeout: const Duration(seconds: 30),
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
     );
 
     final dio = Dio(baseOptions)
