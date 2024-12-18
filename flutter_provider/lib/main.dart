@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_provider/app/unsplash_app.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+void main() async {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  runApp(const UnsplashApp());
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  FlutterNativeSplash.remove();
 }

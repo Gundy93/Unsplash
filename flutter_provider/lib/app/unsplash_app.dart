@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider/presentation/router/app_router.dart';
 
-class UnsplashApp extends StatefulWidget {
+class UnsplashApp extends StatelessWidget {
   const UnsplashApp({super.key});
 
   @override
-  State<UnsplashApp> createState() => _UnsplashAppState();
-}
-
-class _UnsplashAppState extends State<UnsplashApp> {
-  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp.router(
+      routerConfig: appRouter,
+      theme: ThemeData(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        focusColor: Colors.transparent,
       ),
     );
   }
