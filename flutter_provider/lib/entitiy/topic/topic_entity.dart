@@ -1,3 +1,4 @@
+import 'package:flutter_provider/entitiy/photo/photo_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'topic_entity.freezed.dart';
@@ -9,6 +10,7 @@ class TopicEntity with _$TopicEntity {
     final String? id,
     final String? title,
     final String? description,
+    final PhotoEntity? coverPhoto,
   }) = _TopicEntity;
 
   factory TopicEntity.editorial() => const TopicEntity(title: "Editorial");

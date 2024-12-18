@@ -14,10 +14,12 @@ _$PhotoEntityImpl _$$PhotoEntityImplFromJson(Map<String, dynamic> json) =>
       urls: json['urls'] == null
           ? null
           : PhotoUrlsEntity.fromJson(json['urls'] as Map<String, dynamic>),
+      blurHash: json['blurHash'] as String?,
     );
 
 Map<String, dynamic> _$$PhotoEntityImplToJson(_$PhotoEntityImpl instance) =>
     <String, dynamic>{
       'user': instance.user,
       'urls': instance.urls,
+      'blurHash': instance.blurHash,
     };

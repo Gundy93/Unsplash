@@ -11,6 +11,9 @@ _$TopicEntityImpl _$$TopicEntityImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       title: json['title'] as String?,
       description: json['description'] as String?,
+      coverPhoto: json['coverPhoto'] == null
+          ? null
+          : PhotoEntity.fromJson(json['coverPhoto'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TopicEntityImplToJson(_$TopicEntityImpl instance) =>
@@ -18,4 +21,5 @@ Map<String, dynamic> _$$TopicEntityImplToJson(_$TopicEntityImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
+      'coverPhoto': instance.coverPhoto,
     };

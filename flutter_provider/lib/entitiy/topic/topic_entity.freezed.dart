@@ -23,6 +23,7 @@ mixin _$TopicEntity {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  PhotoEntity? get coverPhoto => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,13 @@ abstract class $TopicEntityCopyWith<$Res> {
           TopicEntity value, $Res Function(TopicEntity) then) =
       _$TopicEntityCopyWithImpl<$Res, TopicEntity>;
   @useResult
-  $Res call({String? id, String? title, String? description});
+  $Res call(
+      {String? id,
+      String? title,
+      String? description,
+      PhotoEntity? coverPhoto});
+
+  $PhotoEntityCopyWith<$Res>? get coverPhoto;
 }
 
 /// @nodoc
@@ -55,6 +62,7 @@ class _$TopicEntityCopyWithImpl<$Res, $Val extends TopicEntity>
     Object? id = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? coverPhoto = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -69,7 +77,23 @@ class _$TopicEntityCopyWithImpl<$Res, $Val extends TopicEntity>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      coverPhoto: freezed == coverPhoto
+          ? _value.coverPhoto
+          : coverPhoto // ignore: cast_nullable_to_non_nullable
+              as PhotoEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PhotoEntityCopyWith<$Res>? get coverPhoto {
+    if (_value.coverPhoto == null) {
+      return null;
+    }
+
+    return $PhotoEntityCopyWith<$Res>(_value.coverPhoto!, (value) {
+      return _then(_value.copyWith(coverPhoto: value) as $Val);
+    });
   }
 }
 
@@ -81,7 +105,14 @@ abstract class _$$TopicEntityImplCopyWith<$Res>
       __$$TopicEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? title, String? description});
+  $Res call(
+      {String? id,
+      String? title,
+      String? description,
+      PhotoEntity? coverPhoto});
+
+  @override
+  $PhotoEntityCopyWith<$Res>? get coverPhoto;
 }
 
 /// @nodoc
@@ -98,6 +129,7 @@ class __$$TopicEntityImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? coverPhoto = freezed,
   }) {
     return _then(_$TopicEntityImpl(
       id: freezed == id
@@ -112,6 +144,10 @@ class __$$TopicEntityImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      coverPhoto: freezed == coverPhoto
+          ? _value.coverPhoto
+          : coverPhoto // ignore: cast_nullable_to_non_nullable
+              as PhotoEntity?,
     ));
   }
 }
@@ -119,7 +155,8 @@ class __$$TopicEntityImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TopicEntityImpl implements _TopicEntity {
-  const _$TopicEntityImpl({this.id, this.title, this.description});
+  const _$TopicEntityImpl(
+      {this.id, this.title, this.description, this.coverPhoto});
 
   factory _$TopicEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$TopicEntityImplFromJson(json);
@@ -130,10 +167,12 @@ class _$TopicEntityImpl implements _TopicEntity {
   final String? title;
   @override
   final String? description;
+  @override
+  final PhotoEntity? coverPhoto;
 
   @override
   String toString() {
-    return 'TopicEntity(id: $id, title: $title, description: $description)';
+    return 'TopicEntity(id: $id, title: $title, description: $description, coverPhoto: $coverPhoto)';
   }
 
   @override
@@ -144,12 +183,15 @@ class _$TopicEntityImpl implements _TopicEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.coverPhoto, coverPhoto) ||
+                other.coverPhoto == coverPhoto));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, description, coverPhoto);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +211,8 @@ abstract class _TopicEntity implements TopicEntity {
   const factory _TopicEntity(
       {final String? id,
       final String? title,
-      final String? description}) = _$TopicEntityImpl;
+      final String? description,
+      final PhotoEntity? coverPhoto}) = _$TopicEntityImpl;
 
   factory _TopicEntity.fromJson(Map<String, dynamic> json) =
       _$TopicEntityImpl.fromJson;
@@ -180,6 +223,8 @@ abstract class _TopicEntity implements TopicEntity {
   String? get title;
   @override
   String? get description;
+  @override
+  PhotoEntity? get coverPhoto;
   @override
   @JsonKey(ignore: true)
   _$$TopicEntityImplCopyWith<_$TopicEntityImpl> get copyWith =>

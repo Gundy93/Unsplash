@@ -22,6 +22,7 @@ PhotoEntity _$PhotoEntityFromJson(Map<String, dynamic> json) {
 mixin _$PhotoEntity {
   UserEntity? get user => throw _privateConstructorUsedError;
   PhotoUrlsEntity? get urls => throw _privateConstructorUsedError;
+  String? get blurHash => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $PhotoEntityCopyWith<$Res> {
           PhotoEntity value, $Res Function(PhotoEntity) then) =
       _$PhotoEntityCopyWithImpl<$Res, PhotoEntity>;
   @useResult
-  $Res call({UserEntity? user, PhotoUrlsEntity? urls});
+  $Res call({UserEntity? user, PhotoUrlsEntity? urls, String? blurHash});
 
   $UserEntityCopyWith<$Res>? get user;
   $PhotoUrlsEntityCopyWith<$Res>? get urls;
@@ -56,6 +57,7 @@ class _$PhotoEntityCopyWithImpl<$Res, $Val extends PhotoEntity>
   $Res call({
     Object? user = freezed,
     Object? urls = freezed,
+    Object? blurHash = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
@@ -66,6 +68,10 @@ class _$PhotoEntityCopyWithImpl<$Res, $Val extends PhotoEntity>
           ? _value.urls
           : urls // ignore: cast_nullable_to_non_nullable
               as PhotoUrlsEntity?,
+      blurHash: freezed == blurHash
+          ? _value.blurHash
+          : blurHash // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -102,7 +108,7 @@ abstract class _$$PhotoEntityImplCopyWith<$Res>
       __$$PhotoEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserEntity? user, PhotoUrlsEntity? urls});
+  $Res call({UserEntity? user, PhotoUrlsEntity? urls, String? blurHash});
 
   @override
   $UserEntityCopyWith<$Res>? get user;
@@ -123,6 +129,7 @@ class __$$PhotoEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? urls = freezed,
+    Object? blurHash = freezed,
   }) {
     return _then(_$PhotoEntityImpl(
       user: freezed == user
@@ -133,6 +140,10 @@ class __$$PhotoEntityImplCopyWithImpl<$Res>
           ? _value.urls
           : urls // ignore: cast_nullable_to_non_nullable
               as PhotoUrlsEntity?,
+      blurHash: freezed == blurHash
+          ? _value.blurHash
+          : blurHash // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -140,7 +151,7 @@ class __$$PhotoEntityImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PhotoEntityImpl implements _PhotoEntity {
-  const _$PhotoEntityImpl({this.user, this.urls});
+  const _$PhotoEntityImpl({this.user, this.urls, this.blurHash});
 
   factory _$PhotoEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$PhotoEntityImplFromJson(json);
@@ -149,10 +160,12 @@ class _$PhotoEntityImpl implements _PhotoEntity {
   final UserEntity? user;
   @override
   final PhotoUrlsEntity? urls;
+  @override
+  final String? blurHash;
 
   @override
   String toString() {
-    return 'PhotoEntity(user: $user, urls: $urls)';
+    return 'PhotoEntity(user: $user, urls: $urls, blurHash: $blurHash)';
   }
 
   @override
@@ -161,12 +174,14 @@ class _$PhotoEntityImpl implements _PhotoEntity {
         (other.runtimeType == runtimeType &&
             other is _$PhotoEntityImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.urls, urls) || other.urls == urls));
+            (identical(other.urls, urls) || other.urls == urls) &&
+            (identical(other.blurHash, blurHash) ||
+                other.blurHash == blurHash));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user, urls);
+  int get hashCode => Object.hash(runtimeType, user, urls, blurHash);
 
   @JsonKey(ignore: true)
   @override
@@ -185,7 +200,8 @@ class _$PhotoEntityImpl implements _PhotoEntity {
 abstract class _PhotoEntity implements PhotoEntity {
   const factory _PhotoEntity(
       {final UserEntity? user,
-      final PhotoUrlsEntity? urls}) = _$PhotoEntityImpl;
+      final PhotoUrlsEntity? urls,
+      final String? blurHash}) = _$PhotoEntityImpl;
 
   factory _PhotoEntity.fromJson(Map<String, dynamic> json) =
       _$PhotoEntityImpl.fromJson;
@@ -194,6 +210,8 @@ abstract class _PhotoEntity implements PhotoEntity {
   UserEntity? get user;
   @override
   PhotoUrlsEntity? get urls;
+  @override
+  String? get blurHash;
   @override
   @JsonKey(ignore: true)
   _$$PhotoEntityImplCopyWith<_$PhotoEntityImpl> get copyWith =>

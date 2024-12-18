@@ -22,6 +22,7 @@ class _TopicsService implements TopicsService {
 
   @override
   Future<BaseResponse<List<TopicEntity>?>> listTopics({
+    required accessKey,
     required page,
     required perPage,
   }) async {
@@ -30,7 +31,8 @@ class _TopicsService implements TopicsService {
       r'page': page,
       r'per_page': perPage,
     };
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': accessKey};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<List<TopicEntity>>>(Options(
@@ -57,6 +59,7 @@ class _TopicsService implements TopicsService {
 
   @override
   Future<BaseResponse<List<PhotoEntity>?>> topicsPhoto({
+    required accessKey,
     required id,
     required page,
     required perPage,
@@ -66,7 +69,8 @@ class _TopicsService implements TopicsService {
       r'page': page,
       r'per_page': perPage,
     };
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': accessKey};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponse<List<PhotoEntity>>>(Options(
