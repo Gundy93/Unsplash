@@ -1,5 +1,5 @@
 import 'package:flutter_provider/presentation/router/page_paths.dart';
-import 'package:flutter_provider/util/fuctions.dart';
+import 'package:flutter_provider/util/functions.dart';
 
 class PathProvider {
   static String _generatePathWithQueryParameters({

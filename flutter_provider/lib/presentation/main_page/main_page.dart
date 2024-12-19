@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_provider/presentation/main_page/main_page_screen_type.dart';
 import 'package:flutter_provider/presentation/main_page/main_page_view_model.dart';
+import 'package:flutter_provider/presentation/main_page/screen/home_screen/home_screen.dart';
+import 'package:flutter_provider/presentation/main_page/screen/home_screen/home_screen_view_model.dart';
+import 'package:flutter_provider/presentation/main_page/screen/search_screen/search_screen.dart';
+import 'package:flutter_provider/presentation/main_page/screen/search_screen/search_screen_view_model.dart';
 import 'package:flutter_provider/presentation/theme/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -34,8 +39,36 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg_canvas,
+      body: _body,
       bottomNavigationBar: _bottomNavigationBar,
     );
+  }
+
+  Widget get _body {
+    return ValueListenableBuilder(
+      valueListenable: _viewModel.selectedScreenTypeListenable,
+      builder: (context, screenType, child) => IndexedStack(
+        index: screenType.screenIndex,
+        children: _screens,
+      ),
+    );
+  }
+
+  List<Widget> get _screens {
+    return MainPageScreenType.sortedList.map(_buildScreen).toList();
+  }
+
+  Widget _buildScreen(MainPageScreenType screenType) {
+    return switch (screenType) {
+      MainPageScreenType.home => Provider(
+          create: (context) => HomeScreenViewModel(),
+          child: const HomeScreen(),
+        ),
+      MainPageScreenType.search => Provider(
+          create: (context) => SearchScreenViewModel(),
+          child: const SearchScreen(),
+        ),
+    };
   }
 
   Widget get _bottomNavigationBar {
@@ -55,10 +88,9 @@ class _MainPageState extends State<MainPage> {
   }
 
   List<BottomNavigationBarItem> get _bottomNavigationBarItems {
-    final screenTypes =
-        List<MainPageScreenType>.from(MainPageScreenType.values);
-    screenTypes.sort((a, b) => a.screenIndex.compareTo(b.screenIndex));
-    return screenTypes.map(_buildBottomNavigationBarItem).toList();
+    return MainPageScreenType.sortedList
+        .map(_buildBottomNavigationBarItem)
+        .toList();
   }
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(

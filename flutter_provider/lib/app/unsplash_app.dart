@@ -12,7 +12,6 @@ class UnsplashApp extends StatelessWidget {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
-        focusColor: Colors.transparent,
       ),
     );
   }

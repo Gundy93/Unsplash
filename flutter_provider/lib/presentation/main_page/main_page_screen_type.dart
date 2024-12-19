@@ -24,4 +24,11 @@ enum MainPageScreenType {
         throw Exception('Invalid screen index: $screenIndex');
     }
   }
+
+  static List<MainPageScreenType> get sortedList {
+    final screenTypes =
+        List<MainPageScreenType>.from(MainPageScreenType.values);
+    screenTypes.sort((a, b) => a.screenIndex.compareTo(b.screenIndex));
+    return screenTypes;
+  }
 }
