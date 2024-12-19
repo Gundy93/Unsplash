@@ -13,8 +13,6 @@ class TopicEntity with _$TopicEntity {
     final PhotoEntity? coverPhoto,
   }) = _TopicEntity;
 
-  factory TopicEntity.editorial() => const TopicEntity(title: "Editorial");
-
   factory TopicEntity.fromJson(Map<String, dynamic> json) =>
       _$TopicEntityFromJson(json);
 }
